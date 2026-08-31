@@ -1,0 +1,8 @@
+sources:
+  - name: s1
+    database: dev_db
+    schema: bronze
+
+    tables:
+      - name: customers
+      - name: orders
