@@ -5,4 +5,4 @@
     )
 }}
 
-select id,concat(first_name, '_', last_name) as name from dev_db.bronze.t_emp
+select id,concat(first_name, '_', last_name) as name from {{ source('s1', 't_emp') }}
