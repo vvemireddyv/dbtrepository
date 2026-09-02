@@ -3,7 +3,7 @@ select
 customer_id as customer_id,
 first_name,
 last_name
-from {{ source('s1', 'customers') }}
+from {{ ref('t_customer') }}
 ),
 orders as (
 select
@@ -11,7 +11,7 @@ order_id as order_id,
 customer_id as customer_id,
 order_date,
 status
-from {{ source('s1', 'orders') }}
+from {{ ref('t_orders') }}
 ),
 customer_orders as (
 select
@@ -19,7 +19,7 @@ customer_id,
 min(order_date) as first_order_date,
 max(order_date) as most_recent_order_date,
 count(*) as number_of_orders
-from {{ source('s1', 'orders') }}
+from {{ ref('t_orders') }}
 group by 1
 ),
 final as (
